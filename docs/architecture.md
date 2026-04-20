@@ -1,4 +1,4 @@
-# Whale Rider V4 Architecture
+# Whale Rider Core Architecture
 
 This repository contains the core logic for the Whale Rider V4 high-frequency trading system.
 
