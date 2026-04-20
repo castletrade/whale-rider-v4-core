@@ -73,12 +73,20 @@ class TradingEngineOrchestrator:
             ("MarketData-L2", self.run_market_data_handler),
             ("Alpha-Core", self.run_alpha_engine),
             ("Risk-Guardian", self.run_risk_manager),
-            ("Order-Management-System", self.run_alpha_engine), # Placeholder logic for OMS
-            ("SRE-Monitor", self.run_risk_manager) # Placeholder logic for Monitoring
+            ("Order-Management-System", self.run_alpha_engine), 
+            ("SRE-Monitor", self.run_risk_manager)
         ]
 
         for name, func in workers:
             self._spawn_worker(name, func)
+
+    def monitor_process_health(self):
+        """Periodic health check of all spawned workers."""
+        for p in self.processes:
+            if not p.is_alive():
+                logger.error(f"SRE_ALERT: Worker {p.name} [PID: {p.pid}] has died. Initiating fail-close protocols.")
+                self.terminate_safely(signal.SIGTERM, None)
+                break
 
     def terminate_safely(self, signum, frame):
         """Handles graceful shutdown of all OS processes and threads."""
