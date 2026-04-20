@@ -24,8 +24,9 @@ jobs:
         pip install -r requirements.txt
         
     - name: Run Institutional Tests
+      continue-on-error: true
       run: |
-        pytest || true
+        pytest
         
     - name: Audit Docker Build
       run: |
