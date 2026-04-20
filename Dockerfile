@@ -16,9 +16,11 @@ WORKDIR /opt/castle-trade/whale-rider
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy skeleton core logic
+# Copy institutional infrastructure components
 COPY src/ ./src/
 COPY docs/ ./docs/
+COPY scripts/ ./scripts/
+COPY tests/ ./tests/
 
 # Create logs directory for SRE observability
 RUN mkdir -p logs && touch logs/orchestrator.log
