@@ -5,7 +5,6 @@ Copyright: (c) 2026 Castle Trade LLC. Institutional Grade Trading Infrastructure
 """
 
 import abc
-import asyncio
 from typing import Dict, Any, List
 
 class AbstractExchangeAdapter(abc.ABC):
