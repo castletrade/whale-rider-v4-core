@@ -5,7 +5,7 @@ import logging
 import time
 import signal
 import sys
-from typing import List, Dict, Any
+from typing import Dict, Any
 from dataclasses import dataclass
 
 # Setup logging with institutional standards
